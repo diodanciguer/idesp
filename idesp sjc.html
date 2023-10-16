@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comparação de IDESP</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div style="width: 80%; margin: 0 auto;">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        // Dados das escolas e IDESP
+        var escolas = [
+            "ANA CANDIDA DE BARROS MOLINA PROFESSORA",
+            "EDGAR MELLO MATTOS DE CASTRO ENGENHEIRO",
+            "ESTEVAM FERRI PROFESSOR",
+            "EUCLIDES BUENO MIRAGAIA",
+            "FRANCISCO PEREIRA DA SILVA PROFESSOR",
+            "ILZA IRMA MOELLER COPPIO PROFESSORA",
+            "JOAQUIM ANDRADE MEIRELLES PROFESSOR",
+            "JOAQUIM DE MOURA CANDELARIA PROFESSOR",
+            "MARCIA HELENA BARBOSA LINO PROFESSORA",
+            "RONDON MARECHAL",
+            "MARIA DOLORES VERISSIMO MADUREIRA PROFESSORA",
+            "NELSON DO NASCIMENTO MONTEIRO PROFESSOR",
+            "OLIMPIO CATAO",
+            "PEDRO MASCARENHAS DOUTOR",
+            "PEDRO MAZZA PROFESSOR",
+            "RUI RODRIGUES DORIA DOUTOR",
+            "SONIA MARIA ALEXANDRE PEREIRA PROFESSORA",
+
+        ];
+        var idesp = [
+            [3.82, 2.58], // Valores da ANA CANDIDA para 9º ANO EF e 3º ANO EM
+            [4.00, ],
+            [, 2.28],
+            [2.39, 2.11],
+            [, 3.29],
+            [, 2.86],
+            [, 4.33],
+            [, 4.11],
+            [, 2.60],
+            [4.97, ],
+            [, 3.56],
+            [, 3.50],
+            [4.54, ],
+            [4.84, 1.39],
+            [3.25, 1.82],
+            [3.04, 	1.62],
+            [, 	1.48]
+
+
+
+        ];
+
+        // Crie um contexto de gráfico
+        var ctx = document.getElementById('myChart').getContext('2d');
+
+        // Crie o gráfico de barras agrupadas
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: escolas,
+                datasets: [
+                    {
+                        label: '9º ANO EF',
+                        data: idesp.map(e => e[0] || 0), // Primeiro valor de cada escola, se existir
+                        backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: '3º ANO EM',
+                        data: idesp.map(e => e[1] || 0), // Segundo valor de cada escola, se existir
+                        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'IDESP'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
